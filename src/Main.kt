@@ -21,6 +21,21 @@ fun main() {
     // Class 외부에 있는 Method testFunction2 를 실행시킨다.
     testFunction2(obj2)
 
+    // Interface 는 Class 가 아니기 때문에 객체를 생성할 수 없습니다.
+    // val obj3 = Inter1
+    // val obj4 = Inter2
+
+    // Interface 를 구현한 TestClass3 과 TestClass4 를 객체화합니다.
+    val obj3 = TestClass3()
+    val obj4 = TestClass4()
+
+    // 일반 Method 를 호출하면서 객체화한 Class 를 넣습니다.
+    testFun3(obj3)
+    testFun4(obj4)
+
+    val obj5 = TestClass5()
+    testFun3(obj5)
+    testFun4(obj5)
 }
 
 // 추상 Class 1 생성
@@ -65,7 +80,8 @@ class TestClass2 : AbstractClass2() {
     }
 }
 
-// Interface /////////////////////
+// Interface /////////////////////////////////////////////////////////////////////////
+
 interface Inter1 {
     fun inter1Method1() {
         println("Inter1 의 inter1Method1 입니다.")
@@ -74,15 +90,56 @@ interface Inter1 {
 }
 
 interface Inter2 {
-    fun inter1Method1() {
+    fun inter2Method1() {
         println("Inter1 의 inter1Method1 입니다.")
     }
-    fun inter1Method2()
+    fun inter2Method2()
 }
 
-fun testFun3(obj1:Inter1) {
-
+fun testFun3 (obj1:Inter1) { // Inter1 을 구현한 TestClass3 = obj1
+    obj1.inter1Method1()
+    obj1.inter1Method2()
 }
+
+fun testFun4 (obj1:Inter2) {
+    obj1.inter2Method1()
+    obj1.inter2Method2()
+}
+
+// Interface1 을 구현한 Class 를 생성합니다. (Interface 를 객체로 생성하기 위해 Class 를 생성하는 것입니다.)
+class TestClass3 : Inter1 {
+
+    // Interface 의 Method 를 Overriding 합니다.
+    override fun inter1Method2() {
+        println("TestClass3 의 inter1Method2 입니다.")
+    }
+
+    override fun inter1Method1() {
+        println("TestClass3 의 inter1Method1 입니다.")
+    }
+}
+
+// Interface2 를 구현한 Class 를 생성합니다. (Interface 를 객체로 생성하기 위해 Class 를 생성하는 것입니다.)
+class TestClass4 : Inter2 {
+
+    // Interface 의 Method 를 Overriding 합니다.
+    override fun inter2Method2() {
+        println("TestClass4 의 inter2Method2 입니다.")
+    }
+}
+
+class TestClass5 : Inter1, Inter2 {
+
+    override fun inter1Method2() {
+        println("testClass5 의 inter1Method2 입니다.")
+    }
+
+    override fun inter2Method2() {
+        println("testClass5 의 inter2Method2 입니다.")
+    }
+}
+
+
 
 
 
