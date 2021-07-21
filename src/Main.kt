@@ -21,6 +21,8 @@ fun main() {
     // Class 외부에 있는 Method testFunction2 를 실행시킨다.
     testFunction2(obj2)
 
+    // Interface ////////////////////////////////////////////////////////////////////////
+
     // Interface 는 Class 가 아니기 때문에 객체를 생성할 수 없습니다.
     // val obj3 = Inter1
     // val obj4 = Inter2
@@ -85,15 +87,20 @@ class TestClass2 : AbstractClass2() {
 interface Inter1 {
     fun inter1Method1() {
         println("Inter1 의 inter1Method1 입니다.")
+
     }
-    fun inter1Method2()
+    fun inter1Method2() {
+        println("Inter1 의 inter1Method2 입니다.")
+    }
 }
 
 interface Inter2 {
     fun inter2Method1() {
-        println("Inter1 의 inter1Method1 입니다.")
+        println("Inter2 의 inter2Method1 입니다.")
     }
-    fun inter2Method2()
+    fun inter2Method2() {
+        println("Inter2 의 inter2Method2 입니다.")
+    }
 }
 
 fun testFun3 (obj1:Inter1) { // Inter1 을 구현한 TestClass3 = obj1
@@ -138,6 +145,10 @@ class TestClass5 : Inter1, Inter2 {
         println("testClass5 의 inter2Method2 입니다.")
     }
 }
+
+
+
+
 
 
 
